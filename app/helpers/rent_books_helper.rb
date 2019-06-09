@@ -1,0 +1,2 @@
+module RentBooksHelper
+end
