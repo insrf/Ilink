@@ -20,8 +20,7 @@ class BooksController < ApplicationController
     @book = Book.new(book_params)
 
     if @book.save
-      flash[:notice] = 'Your book successfully created.'
-      redirect_to @book
+      redirect_to @book, notice: "Your book successfully created."
     else
       render :new
     end
@@ -29,20 +28,15 @@ class BooksController < ApplicationController
 
   def update
     if @book.update(book_params)
-      redirect_to @book
+      redirect_to @book, notice: "Your book successfully updated."
     else
       render :edit
     end
   end
 
   def destroy
-    if current_user.author_of?(@book)
-      @book.destroy
-      flash[:notice] = 'you book successfully deleted'
-    else
-      flash[:notice] = 'you do not have enough rights'
-    end
-    redirect_to books_path
+    @book.destroy
+    redirect_to books_path, notice: "Your book successfully deleted"
   end
 
   private
