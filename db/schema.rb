@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20190609093826) do
+ActiveRecord::Schema.define(version: 20190611074209) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -30,6 +30,7 @@ ActiveRecord::Schema.define(version: 20190609093826) do
     t.time "end_rent_time"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["book_id", "user_id"], name: "index_rent_books_on_book_id_and_user_id"
   end
 
   create_table "users", force: :cascade do |t|
