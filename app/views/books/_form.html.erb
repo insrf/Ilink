@@ -18,7 +18,7 @@
   <div class="form-group">
     <%= f.label :parent_id, :class => 'control-label col-lg-2' %>
     <div class="col-lg-10">
-      <%= f.text_field :parent_id, :class => 'form-control' %>
+      <%= f.collection_select :parent_id, Book.all, :id, :title, prompt: true, :class => 'form-control' %>
     </div>
     <%=f.error_span(:parent_id) %>
   </div>
@@ -32,7 +32,7 @@
   <div class="form-group">
     <%= f.label :info, :class => 'control-label col-lg-2' %>
     <div class="col-lg-10">
-      <%= f.text_field :info, :class => 'form-control' %>
+      <%= f.text_area_tag :info, "INFO", size: "24x6", :class => 'form-control' %>
     </div>
     <%=f.error_span(:info) %>
   </div>

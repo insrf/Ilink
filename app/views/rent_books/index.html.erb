@@ -1,4 +1,4 @@
-<%- model_class = Book -%>
+<%- model_class = RentBook -%>
 <div class="page-header">
   <h1><%=t '.title', :default => model_class.model_name.human.pluralize.titleize %></h1>
 </div>
@@ -6,30 +6,30 @@
   <thead>
     <tr>
       <th><%= model_class.human_attribute_name(:id) %></th>
-      <th><%= model_class.human_attribute_name(:parent_id) %></th>
-      <th><%= model_class.human_attribute_name(:title) %></th>
-      <th><%= model_class.human_attribute_name(:info) %></th>
+      <th><%= model_class.human_attribute_name(:book_id) %></th>
+      <th><%= model_class.human_attribute_name(:user_id) %></th>
+      <th><%= model_class.human_attribute_name(:start_rent_time) %></th>
+      <th><%= model_class.human_attribute_name(:end_rent_time) %></th>
       <th><%= model_class.human_attribute_name(:created_at) %></th>
       <th><%=t '.actions', :default => t("helpers.actions") %></th>
     </tr>
   </thead>
   <tbody>
-    <% @books.each do |book| %>
+    <% @rent_books.each do |rent_book| %>
       <tr>
-        <td><%= link_to book.id, book_path(book) %></td>
-        <td><%= book.parent_id %></td>
-        <td><%= book.title %></td>
-        <td><%= book.info %></td>
-        <td><%=l book.created_at %></td>
+        <td><%= link_to rent_book.id, rent_book_path(rent_book) %></td>
+        <td><%= rent_book.book_id %></td>
+        <td><%= rent_book.user_id %></td>
+        <td><%= rent_book.start_rent_time %></td>
+        <td><%= rent_book.end_rent_time %></td>
+        <td><%=l rent_book.created_at %></td>
         <td>
-          <%= link_to t('.rent_book', :default => t("helpers.links.rent")),
-                      new_book_rent_book_path(book), :class => 'btn btn-default btn-xs' %>
           <%= link_to t('.show', :default => t("helpers.links.show")),
-                      book_path(book), :class => 'btn btn-default btn-xs' %>
+                      rent_book_path(rent_book), :class => 'btn btn-default btn-xs' %>
           <%= link_to t('.edit', :default => t("helpers.links.edit")),
-                      edit_book_path(book), :class => 'btn btn-default btn-xs' %>
+                      edit_rent_book_path(rent_book), :class => 'btn btn-default btn-xs' %>
           <%= link_to t('.destroy', :default => t("helpers.links.destroy")),
-                      book_path(book),
+                      rent_book_path(rent_book),
                       :method => :delete,
                       :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')) },
                       :class => 'btn btn-xs btn-danger' %>
@@ -40,5 +40,5 @@
 </table>
 
 <%= link_to t('.new', :default => t("helpers.links.new")),
-            new_book_path,
+            new_book_rent_book_path,
             :class => 'btn btn-primary' %>

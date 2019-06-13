@@ -13,12 +13,10 @@ feature 'Create book', %q{
       visit books_path
       click_on 'New'
       fill_in 'Title', with: 'Title book'
-      fill_in 'Info', with: 'text text'
       click_on 'Create Book'
 
       expect(page).to have_content 'Your book successfully created.'
       expect(page).to have_content 'Title book'
-      expect(page).to have_content 'text text'
     end
 
     # TODO: scenario "Non-authenticated user creates book" do
@@ -33,7 +31,6 @@ feature 'Create book', %q{
         visit books_path
         click_on 'New'
         fill_in 'Title', with: ''
-        fill_in 'Info', with: ''
         click_on 'Create Book'
 
         expect(page).to have_content "Title can't be blank"

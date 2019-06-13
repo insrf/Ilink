@@ -1,0 +1,55 @@
+<%= form_for [@book, @rent_book], :html => { :class => "form-horizontal rent_book" } do |f| %>
+
+  <% if @rent_book.errors.any? %>
+    <div id="error_expl" class="panel panel-danger">
+      <div class="panel-heading">
+        <h3 class="panel-title"><%= pluralize(@rent_book.errors.count, "error") %> prohibited this rent_book from being saved:</h3>
+      </div>
+      <div class="panel-body">
+        <ul>
+        <% @rent_book.errors.full_messages.each do |msg| %>
+          <li><%= msg %></li>
+        <% end %>
+        </ul>
+      </div>
+    </div>
+  <% end %>
+
+  <!-- <div class="form-group">
+    <%= f.label :book_id, :class => 'control-label col-lg-2' %>
+    <div class="col-lg-10">
+      <%= f.collection_select :book_id, Book.all, :id, :title, prompt: true, :class => 'form-control' %>
+    </div>
+    <%=f.error_span(:book_id) %>
+  </div> -->
+  <!-- <div class="form-group">
+    <%= f.label :user_id, :class => 'control-label col-lg-2' %>
+    <div class="col-lg-10">
+      <%= f.text_field :user_id, :class => 'form-control' %>
+    </div>
+    <%=f.error_span(:user_id) %>
+  </div> -->
+  <div class="form-group">
+    <%= f.label :start_rent_time, :class => 'control-label col-lg-2' %>
+    <div class="col-lg-10">
+      <%= f.time_field :start_rent_time, :class => 'form-control' %>
+    </div>
+    <%=f.error_span(:start_rent_time) %>
+  </div>
+  <div class="form-group">
+    <%= f.label :end_rent_time, :class => 'control-label col-lg-2' %>
+    <div class="col-lg-10">
+      <%= f.time_field :end_rent_time, :class => 'form-control' %>
+    </div>
+    <%=f.error_span(:end_rent_time) %>
+  </div>
+
+  <div class="form-group">
+    <div class="col-lg-offset-2 col-lg-10">
+      <%= f.submit nil, :class => 'btn btn-primary' %>
+      <%= link_to t('.cancel', :default => t("helpers.links.cancel")),
+                book_rent_books_path(@rent_book.book), :class => 'btn btn-default' %>
+    </div>
+  </div>
+
+<% end %>

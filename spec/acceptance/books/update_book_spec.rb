@@ -14,12 +14,10 @@ feature 'Update book', %q{
       visit books_path
       click_on 'Edit'
       fill_in 'Title', with: 'Another title book'
-      fill_in 'Info', with: 'Another text'
       click_on 'Update Book'
 
       expect(page).to have_content 'Your book successfully updated.'
       expect(page).to have_content 'Another title book'
-      expect(page).to have_content 'Another text'
     end
 
     # TODO: scenario "Non-authenticated user update book" do
@@ -34,7 +32,6 @@ feature 'Update book', %q{
         visit books_path
         click_on 'Edit'
         fill_in 'Title', with: ''
-        fill_in 'Info', with: ''
         click_on 'Update Book'
 
         expect(page).to have_content "Title can't be blank"
