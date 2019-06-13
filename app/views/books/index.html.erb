@@ -3,11 +3,9 @@
   <h1><%=t '.title', :default => model_class.model_name.human.pluralize.titleize %></h1>
 </div>
 
-<div>
-  <ul>
-    <%= nested_books @books.arrange(:order => :created_at) %>
-  </ul>
-</div>
+<ul class="list-group">
+  <%= nested_books @books.arrange(:order => :created_at) %>
+</ul>
 
 <%= link_to t('.new', :default => t("helpers.links.new")),
             new_book_path,
