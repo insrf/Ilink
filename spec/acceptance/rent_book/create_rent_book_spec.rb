@@ -11,7 +11,7 @@ feature 'Rent book', %q{
   scenario 'user rents book' do
       sign_in(user)
 
-      visit books_path
+      visit root_path
       click_on 'Rent'
       fill_in 'Start rent time', with: Time.now
       fill_in 'End rent time', with: Time.now + 2.hour
@@ -25,7 +25,7 @@ feature 'Rent book', %q{
     scenario 'user take book with invalid attributes' do
         sign_in(user)
 
-        visit books_path
+        visit root_path
         click_on 'Rent'
         fill_in 'Start rent time', with: ''
         fill_in 'End rent time', with: ''

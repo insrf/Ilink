@@ -8,4 +8,11 @@ FactoryBot.define do
     name { "MyString" }
     password { "MyString" }
   end
+
+  factory :admin do
+    email { "test@test.com" }
+    name { "MyString" }
+    password { "MyString" }
+    type { "Admin" }
+  end
 end

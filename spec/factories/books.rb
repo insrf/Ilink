@@ -4,13 +4,13 @@ FactoryBot.define do
   end
 
   factory :book do
-    parent_id { 1 }
+    parent_id { '' }
     title { "MyString" }
     info { "MyText" }
   end
 
   factory :generate_book, class: "Book" do
-    parent_id { 1 }
+    parent_id { '' }
     title { generate(:title) }
     info { "MyTextInfo" }
   end

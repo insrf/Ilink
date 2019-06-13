@@ -6,3 +6,7 @@
 <ul class="list-group">
   <%= nested_books @books.arrange(:order => :created_at) %>
 </ul>
+
+<%= link_to t('.new', :default => t("helpers.links.new")),
+            new_admin_book_path,
+            :class => 'btn btn-primary' %>

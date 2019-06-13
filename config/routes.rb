@@ -3,8 +3,11 @@ Rails.application.routes.draw do
 
   root "books#index"
 
-  resources :books do
+  resources :books, only: %i[index, show] do
     resources :rent_books, shallow: true
   end
-  # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
+
+  namespace :admin do
+    resources :books, shallow: true
+  end
 end

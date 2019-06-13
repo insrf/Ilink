@@ -1,5 +1,4 @@
 class RentBooksController < ApplicationController
-  before_action :authenticate_user!, except: %w[index show]
   before_action :find_rent_books, only: %i[index]
   before_action :find_rent_book, only: %i[show edit update destroy]
   before_action :find_book, only: %i[new create]

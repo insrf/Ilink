@@ -6,12 +6,13 @@ feature 'Update book', %q{
 } do
 
   given(:user) { create(:user) }
+  given(:admin) { create(:admin) }
   given!(:book) { create(:book) }
 
-  scenario 'admin update book' do
-      sign_in(user)
+  scenario 'Admin update book' do
+      sign_in(admin)
 
-      visit books_path
+      visit admin_books_path
       click_on 'Edit'
       fill_in 'Title', with: 'Another title book'
       click_on 'Update Book'
@@ -20,16 +21,18 @@ feature 'Update book', %q{
       expect(page).to have_content 'Another title book'
     end
 
-    # TODO: scenario "Non-authenticated user update book" do
-    #   visit books_path
-    #
-    #   expect(page).to_not have_link 'Edit'
-    # end
+    scenario "User try update book" do
+      sign_in(user)
+      visit admin_books_path
+
+      expect(page).to have_content 'You are not authorized to view this page.'
+      expect(page).to_not have_link 'Edit'
+    end
 
     scenario 'Admin updated book with invalid attributes' do
-        sign_in(user)
+        sign_in(admin)
 
-        visit books_path
+        visit admin_books_path
         click_on 'Edit'
         fill_in 'Title', with: ''
         click_on 'Update Book'
