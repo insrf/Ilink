@@ -40,6 +40,9 @@ gem "less-rails"
 gem "twitter-bootstrap-rails"
 gem 'ancestry'
 gem "redcarpet"
+gem 'md_simple_editor'
+gem "font-awesome-rails"
+gem 'jquery-rails'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
