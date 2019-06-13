@@ -9,7 +9,7 @@
   <dt><strong><%= model_class.human_attribute_name(:title) %>:</strong></dt>
   <dd><%= @book.title %></dd>
   <dt><strong><%= model_class.human_attribute_name(:info) %>:</strong></dt>
-  <dd><%= @book.info %></dd>
+  <dd><%= markdown(@book.info) %></dd>
 </dl>
 
 <div>
