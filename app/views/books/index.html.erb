@@ -3,6 +3,10 @@
   <h1><%=t '.title', :default => model_class.model_name.human.pluralize.titleize %></h1>
 </div>
 
+<% if current_user.is_a?(Admin) %>
+  <%=link_to "Go Library", admin_books_path, :class => 'btn btn-default btn-xs' %>
+<% end %>
+
 <ul class="list-group">
   <%= nested_books @books.arrange(:order => :created_at) %>
 </ul>

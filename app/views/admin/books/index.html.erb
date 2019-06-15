@@ -3,6 +3,8 @@
   <h1><%=t '.title', :default => model_class.model_name.human.pluralize.titleize %></h1>
 </div>
 
+<%= link_to "Home", root_path, :class => 'btn btn-default btn-xs' %>
+
 <ul class="list-group">
   <%= nested_books @books.arrange(:order => :created_at) %>
 </ul>

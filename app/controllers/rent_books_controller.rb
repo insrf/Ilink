@@ -4,6 +4,7 @@ class RentBooksController < ApplicationController
   before_action :find_book, only: %i[new create]
 
   def index
+    @rent_books = RentBook.all
   end
 
   def show
