@@ -4,7 +4,17 @@ class RentBooksController < ApplicationController
   before_action :find_book, only: %i[new create]
 
   def index
-    @rent_books = RentBook.all
+    @rent_books = Book.find(params[:book_id]).rent_books
+  end
+
+  def search
+    if params[:start_date].empty? || params[:end_date].empty?
+      @rent_books = RentBook.all
+      flash[:alert] = "Start date or End date cannot be empty"
+    else
+      @rent_books = RentBook.where("start_rent_time <= :start_date  AND end_rent_time >= :end_date",
+        {start_date: params[:start_date], end_date: params[:end_date]})
+    end
   end
 
   def show
