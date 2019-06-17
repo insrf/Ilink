@@ -1,16 +1,14 @@
 class RentBooksController < ApplicationController
-  before_action :find_rent_books, only: %i[index]
+  before_action :find_rent_books, only: %i[index, search]
   before_action :find_rent_book, only: %i[show edit update destroy]
 
   def index
-    @rent_books = RentBook.all
   end
 
   def search
     if params[:start_date].present? || params[:end_date].present?
       @rent_books = RentBook.before_date(params[:start_date]).after_date(params[:end_date])
     else
-      @rent_books = RentBook.all
       flash[:alert] = "Start date or End date cannot be empty"
     end
   end
@@ -41,11 +39,6 @@ class RentBooksController < ApplicationController
     else
       render :edit
     end
-  end
-
-  def destroy
-    @rent_book.destroy
-    redirect_to rent_books_path, notice: "Your rent_book successfully deleted"
   end
 
   private
