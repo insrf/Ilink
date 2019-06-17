@@ -12,7 +12,7 @@ feature 'Update rent', %q{
   scenario 'user update book' do
       sign_in(user)
 
-      visit book_rent_books_path(rent_book.book)
+      visit rent_books_path(rent_book.book)
       click_on 'Edit'
       fill_in 'Start rent time', with: Time.now
       fill_in 'End rent time', with: Time.now + 2.hour
@@ -24,7 +24,7 @@ feature 'Update rent', %q{
   scenario 'User updated book with invalid attributes' do
       sign_in(user)
 
-      visit book_rent_books_path(rent_book.book)
+      visit rent_books_path(rent_book.book)
       click_on 'Edit'
       fill_in 'Start rent time', with: ''
       fill_in 'End rent time', with: ''

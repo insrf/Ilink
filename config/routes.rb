@@ -3,10 +3,8 @@ Rails.application.routes.draw do
 
   root "books#index"
 
-  resources :books, only: %i[index, show] do
-    resources :rent_books, shallow: true
-  end
-  resources :rent_books, only: %i[index]
+  resources :books, only: %i[index, show]
+  resources :rent_books
 
   get "search_books" => "rent_books#search"
 

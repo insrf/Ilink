@@ -6,6 +6,7 @@
 <% if current_user.is_a?(Admin) %>
   <%=link_to "Go Library", admin_books_path, :class => 'btn btn-default btn-xs' %>
 <% end %>
+  <%=link_to "Go Rent", rent_books_path, :class => 'btn btn-default btn-xs' %>
 
 <ul class="list-group">
   <%= nested_books @books.arrange(:order => :created_at) %>

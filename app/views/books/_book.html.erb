@@ -1,13 +1,8 @@
+<li class="list-group-item"><%= book.title %>
+  <span class="badge badge-primary badge-pill"><%= book.children.count %></span>
+</li>
 
-  <!-- <li><%= link_to book.id, book_path(book) %></li> -->
-  <!-- <li><%= book.parent_id %></li> -->
-  <li class="list-group-item"><%= book.title %>
-    <span class="badge badge-primary badge-pill"><%= book.children.count %></span>
-  </li>
-
-  <!-- <li><%= book.info %></li> -->
-  <!-- <li><%=l book.created_at %></li> -->
-  <li class="list-group-item">
-    <%= link_to t('.rent_book', :default => t("helpers.links.rent")),
-                new_book_rent_book_path(book), :class => 'btn btn-default btn-xs' %>
-  </li>
+<li class="list-group-item">
+  <%= link_to t('.rent_book', :default => t("helpers.links.rent")),
+              new_rent_book_path, :class => 'btn btn-default btn-xs' %>
+</li>

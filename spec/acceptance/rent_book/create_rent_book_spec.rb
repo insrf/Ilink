@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-feature 'Rent book', %q{
+feature 'Create rent book', %q{
   As an user
   I want to be able to rent book
 } do
@@ -11,11 +11,14 @@ feature 'Rent book', %q{
   scenario 'user rents book' do
       sign_in(user)
 
-      visit root_path
-      click_on 'Rent'
+      visit rent_books_path
+      click_on 'New'
+
+      select book.title, :from => "Book"
       fill_in 'Start rent time', with: Time.now
       fill_in 'End rent time', with: Time.now + 2.hour
       click_on 'Create Rent book'
+
 
       expect(page).to have_content 'Your rent_book successfully created.'
       expect(page).to have_content book.id
