@@ -8,12 +8,11 @@ class RentBooksController < ApplicationController
   end
 
   def search
-    if params[:start_date].empty? || params[:end_date].empty?
+    if params[:start_date].present? || params[:end_date].present?
+      @rent_books = RentBook.before_date(params[:start_date]).after_date(params[:end_date])
+    else
       @rent_books = RentBook.all
       flash[:alert] = "Start date or End date cannot be empty"
-    else
-      @rent_books = RentBook.where("start_rent_time <= :start_date  AND end_rent_time >= :end_date",
-        {start_date: params[:start_date], end_date: params[:end_date]})
     end
   end
 
