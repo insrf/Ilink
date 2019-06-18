@@ -1,7 +1,7 @@
 <nav class="navbar navbar-expand-lg navbar-light bg-light">
   <a class="navbar-brand">Search books. Check rent dates</a>
 
-    <%= form_with url: search_books_path, local: true, method: :get, :html => { :class => "form-inline" } do |f| %>
+    <%= form_with url: rent_books_path, local: true, method: :get, :html => { :class => "form-inline" } do |f| %>
 
     <%= f.label :start_date, :class => 'control-label' %>
     <%= f.date_field :start_date, :class => 'form-control mr-sm-2' %>

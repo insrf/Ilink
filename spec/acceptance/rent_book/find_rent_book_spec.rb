@@ -14,7 +14,7 @@ feature 'Find rent book', %q{
   scenario 'user try rent book' do
       sign_in(user)
 
-      visit search_books_path
+      visit rent_books_path
 
       fill_in 'start_date', with:  Time.now
       fill_in 'end_date',  with: Time.now + 2.hour
@@ -27,7 +27,7 @@ feature 'Find rent book', %q{
     scenario 'user find book with invalid attributes' do
         sign_in(user)
 
-        visit search_books_path
+        visit rent_books_path
 
         fill_in 'start_date', with: ''
         fill_in 'end_date', with: ''
