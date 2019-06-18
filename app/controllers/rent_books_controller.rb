@@ -4,7 +4,7 @@ class RentBooksController < ApplicationController
 
   def index
     if params[:start_date].present? || params[:end_date].present?
-      @rent_books = RentBook.before_date(params[:start_date]).after_date(params[:end_date])
+      @rent_books = RentBook.where(book_id: params[:book_ids]).before_date(params[:start_date]).after_date(params[:end_date])
     else
       flash[:alert] = "Start date or End date cannot be empty"
     end

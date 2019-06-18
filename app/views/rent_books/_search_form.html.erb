@@ -1,7 +1,20 @@
 <nav class="navbar navbar-expand-lg navbar-light bg-light">
-  <a class="navbar-brand">Search books. Check rent dates</a>
-
+  <a class="navbar-brand">Search books</a>
     <%= form_with url: rent_books_path, local: true, method: :get, :html => { :class => "form-inline" } do |f| %>
+
+    <div class="dropdown form-group">
+      <button class="dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown">
+        Select books<b class="caret"></b>
+      </button>
+      <div class="dropdown-menu" >
+      <%= f.collection_check_boxes :book_ids, Book.all, :id, :title do |b| %>
+        <div class="dropdown-item" aria-labelledby="dropdownMenuButton">
+          <%= b.check_box id: "answer_ids_#{b.object.id}" %>
+          <%= b.label %>
+        </div>
+      <% end %>
+      </div>
+    </div>
 
     <%= f.label :start_date, :class => 'control-label' %>
     <%= f.date_field :start_date, :class => 'form-control mr-sm-2' %>

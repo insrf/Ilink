@@ -11,7 +11,7 @@ feature 'Find rent book', %q{
                                           start_rent_time: Time.now - 1.week,
                                           end_rent_time: Time.now + 1.week) }
 
-  scenario 'user try rent book' do
+  scenario 'user try find rent book' do
       sign_in(user)
 
       visit rent_books_path

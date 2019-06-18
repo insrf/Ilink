@@ -14,4 +14,5 @@
 //= require rails-ujs
 //= require turbolinks
 //= require md_simple_editor
+//= require twitter/bootstrap
 //= require_tree .
