@@ -28,8 +28,9 @@ feature 'Create rent book', %q{
     scenario 'user take book with invalid attributes' do
         sign_in(user)
 
-        visit root_path
-        click_on 'Rent'
+        visit rent_books_path
+        click_on 'New'
+        
         fill_in 'Start rent time', with: ''
         fill_in 'End rent time', with: ''
         click_on 'Create Rent book'

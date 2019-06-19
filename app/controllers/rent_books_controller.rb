@@ -3,11 +3,7 @@ class RentBooksController < ApplicationController
   before_action :find_rent_book, only: %i[show edit update]
 
   def index
-    if params[:start_date].present? || params[:end_date].present?
-      @rent_books = RentBook.where(book_id: params[:book_ids]).before_date(params[:start_date]).after_date(params[:end_date])
-    else
-      flash[:alert] = "Start date or End date cannot be empty"
-    end
+    @rent_books = RentBook.filter(search_rent_book_params)
   end
 
   def show
@@ -39,6 +35,10 @@ class RentBooksController < ApplicationController
   end
 
   private
+
+  def search_rent_book_params
+    params.permit(:book_ids, :start_date, :end_date)
+  end
 
   def rent_book_params
     params.require(:rent_book).permit(:book_id, :start_rent_time, :end_rent_time)

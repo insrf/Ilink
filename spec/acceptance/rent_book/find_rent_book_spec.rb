@@ -11,29 +11,39 @@ feature 'Find rent book', %q{
                                           start_rent_time: Time.now - 1.week,
                                           end_rent_time: Time.now + 1.week) }
 
-  scenario 'user try find rent book' do
+  scenario 'user try find rent book with only end_date parameter' do
       sign_in(user)
 
       visit rent_books_path
 
-      fill_in 'start_date', with:  Time.now
-      fill_in 'end_date',  with: Time.now + 2.hour
+      fill_in 'end_date',  with: Time.now
       click_on 'search'
 
-      expect(page).to have_content book.id
-      expect(page).to have_content user.id
+      expect(page).to have_content book.title
+      expect(page).to have_content user.email
     end
 
-    scenario 'user find book with invalid attributes' do
-        sign_in(user)
+    scenario 'user try find rent book with only start_date parameter' do
+      sign_in(user)
 
-        visit rent_books_path
+      visit rent_books_path
 
-        fill_in 'start_date', with: ''
-        fill_in 'end_date', with: ''
-        click_on 'search'
+      fill_in 'start_date',  with: Time.now
+      click_on 'search'
 
+      expect(page).to have_content book.title
+      expect(page).to have_content user.email
+    end
 
-        expect(page).to have_content "Start date or End date cannot be empty"
+    scenario 'user try find rent book with only select book ' do
+      sign_in(user)
+
+      visit rent_books_path
+
+      page.check(book.id) 
+      click_on 'search'
+
+      expect(page).to have_content book.title
+      expect(page).to have_content user.email
     end
   end

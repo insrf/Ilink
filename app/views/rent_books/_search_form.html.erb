@@ -9,7 +9,7 @@
       <div class="dropdown-menu" >
       <%= f.collection_check_boxes :book_ids, Book.all, :id, :title do |b| %>
         <div class="dropdown-item" aria-labelledby="dropdownMenuButton">
-          <%= b.check_box id: "answer_ids_#{b.object.id}" %>
+          <%= b.check_box id: b.object.id %>
           <%= b.label %>
         </div>
       <% end %>

@@ -1,8 +1,3 @@
 <li class="list-group-item"><%= book.title %>
   <span class="badge badge-primary badge-pill"><%= book.children.count %></span>
 </li>
-
-<li class="list-group-item">
-  <%= link_to t('.rent_book', :default => t("helpers.links.rent")),
-              new_rent_book_path, :class => 'btn btn-default btn-xs' %>
-</li>
