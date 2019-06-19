@@ -37,7 +37,7 @@ class RentBooksController < ApplicationController
   private
 
   def search_rent_book_params
-    params.permit(:book_ids, :start_date, :end_date)
+    params.permit(:start_date, :end_date, book_ids: [])
   end
 
   def rent_book_params
